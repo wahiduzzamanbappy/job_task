@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:job_task/ui/screens/welcome_splash_screens.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
- final  name = '/';
+
+  static const name = '/';
+
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.pushNamedAndRemoveUntil(
+          context, WelcomeScreen.name, (predicate) => false);
+    });
     return Scaffold(
-      backgroundColor: const Color(0xFF2B2E6C), // Deep blue gradient look
+      backgroundColor: const Color(0xFF2B2E6C),
       body: Center(
         child: Text(
           'INTRICATE',
@@ -21,4 +28,3 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-
