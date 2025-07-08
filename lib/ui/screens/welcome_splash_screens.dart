@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:job_task/ui/screens/mood_selection_screen.dart';
+import '../../app/assets_path.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
+  static const String name = '/welcome-screen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/welcome_illustration.png', height: 250),
+            SvgPicture.asset(AssetsPath.welcomeImage, width: 120),
             SizedBox(height: 32),
             Text(
               'Your Journey to a Better\nMind Starts Here.',
@@ -29,15 +35,13 @@ class WelcomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 32),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF5A55CA),
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
+              onPressed: () {
+                Navigator.pushNamed(context, MoodSelectionScreen.name);
+              },
+              child: Text(
+                'Get Started – Free 3-Day Trial',
+                style: TextStyle(color: Colors.white),
               ),
-              onPressed: () {},
-              child: Text('Get Started – Free 3-Day Trial'),
             )
           ],
         ),
